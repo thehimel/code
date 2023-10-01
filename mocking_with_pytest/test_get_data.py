@@ -14,7 +14,8 @@ def test_get_country_data(mocker):
     """
     # Construct a mock response with the components that are used in the entity to be mocked.
     mock_response = Mock()
-    mock_response.status_code = 200
+    status_code_ok = 200
+    mock_response.status_code = status_code_ok
     mock_response.json.return_value = [
         {
             "name": {"common": "United States"},
@@ -28,9 +29,12 @@ def test_get_country_data(mocker):
     mocker.patch("requests.get", return_value=mock_response)
 
     expected = {
-        "name": "United States",
-        "currencies": ["USD"],
-        "region": "Americas",
-        "population": 329484123,
+        "status_code": status_code_ok,
+        "data": {
+            "name": "United States",
+            "currencies": ["USD"],
+            "region": "Americas",
+            "population": 329484123,
+        }
     }
     assert get_country_data(name="canada") == expected
