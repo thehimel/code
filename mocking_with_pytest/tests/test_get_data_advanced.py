@@ -6,7 +6,7 @@ import pytest
 
 from mocking_with_pytest.get_data import get_countries_with_population
 
-mocked_response = {
+mocked_response_get_country = {
     "usa": {
         "success": True,
         "body": {
@@ -59,7 +59,7 @@ test_data = [
 def test_get_countries_with_population(country_names, expected, mocker):
     mocker.patch(
         target="mocking_with_pytest.get_data.get_country",
-        side_effect=lambda *args, **kwargs: mocked_response[kwargs["country_name"]],
+        side_effect=lambda *args, **kwargs: mocked_response_get_country[kwargs["country_name"]],
     )
     assert get_countries_with_population(country_names=country_names) == expected
 
