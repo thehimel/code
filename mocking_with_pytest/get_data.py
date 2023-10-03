@@ -3,7 +3,7 @@ Author: Himel Das
 """
 
 import requests
-from utilities.logger import logging
+from utilities.logger import logger
 
 
 def get_country(name: str) -> dict or None:
@@ -23,4 +23,4 @@ def get_country(name: str) -> dict or None:
 
 
 if __name__ == "__main__":
-    logging.info(get_country(name="usa"))
+    logger.info(get_country(name="usa"))
