@@ -8,8 +8,8 @@ from utilities.logger import logger
 
 
 def get_country(name: str) -> dict:
-    base_url = "https://restcountries.com/v3.1/name"
-    response = requests.get(url=f"{base_url}/{name}")
+    api_url = "https://restcountries.com/v3.1/name"
+    response = requests.get(url=f"{api_url}/{name}")
 
     if response.status_code == 200:
         country_data = response.json()[0]
