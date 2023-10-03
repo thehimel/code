@@ -14,7 +14,7 @@ from unittest.mock import Mock
 
 import pytest
 
-from mocking_with_pytest.get_data import get_country
+from mocking_with_pytest.simple.get_data import get_country
 
 
 def test_get_country_data_positive(mocker):
