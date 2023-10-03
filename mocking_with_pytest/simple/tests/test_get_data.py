@@ -34,8 +34,8 @@ def test_get_country_data_positive(mocker):
     mocker.patch(target="requests.get", return_value=mock_response)
 
     expected = {
-        "status_code": 200,
-        "data": {
+        "success": True,
+        "body": {
             "name": "United States",
             "currencies": ["USD"],
             "region": "Americas",
@@ -47,15 +47,14 @@ def test_get_country_data_positive(mocker):
 
 def test_get_country_data_negative(mocker):
     # Construct a mock response with the components that are used in the entity to be mocked.
-    mock_response = Mock(status_code=500)
+    mock_response = Mock(status_code=404, text={"status": 404, "message": "Not Found"})
 
     # Patch the target with the mocked response.
     mocker.patch(target="requests.get", return_value=mock_response)
 
-    expected = {"status_code": 500}
-    response = get_country(name="canada")
+    expected = {"success": False, "body": {"status": 404, "message": "Not Found"}}
+    response = get_country(name="invalid_name")
     assert expected == response
-    assert "data" not in response
 
 
 if __name__ == "__main__":
