@@ -42,7 +42,7 @@ def test_get_country_data_positive(mocker):
             "population": 329484123,
         },
     }
-    assert get_country(name="canada") == expected
+    assert get_country(country_name="canada") == expected
 
 
 def test_get_country_data_negative(mocker):
@@ -53,7 +53,7 @@ def test_get_country_data_negative(mocker):
     mocker.patch(target="requests.get", return_value=mock_response)
 
     expected = {"success": False, "body": {"status": 404, "message": "Not Found"}}
-    response = get_country(name="invalid_name")
+    response = get_country(country_name="invalid_name")
     assert expected == response
 
 
