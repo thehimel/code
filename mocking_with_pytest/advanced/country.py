@@ -9,7 +9,7 @@ class Country:
         self.region = region
         self.population = population
 
-    def get_data(self):
+    def to_dict(self):
         return {
             "name": self.name,
             "currencies": self.currencies,

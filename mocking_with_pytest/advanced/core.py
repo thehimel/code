@@ -17,7 +17,7 @@ def main():
             region=data["region"],
             population=data["population"],
         )
-        logger.info(f"Country: {country.get_data()}")
+        logger.info(f"Country: {country.to_dict()}")
     else:
         logger.error(msg=f"Error fetching data for the country '{name}': {data}.")
 
