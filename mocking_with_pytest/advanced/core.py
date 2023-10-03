@@ -1,8 +1,8 @@
 """Author: Himel Das"""
 
 from mocking_with_pytest.advanced.country import Country
-from mocking_with_pytest.advanced.get_data import get_countries_with_population
-from mocking_with_pytest.simple.get_data import get_country
+from mocking_with_pytest.get_data import get_countries_with_population
+from mocking_with_pytest.get_data import get_country
 from utilities.logger import logger
 
 

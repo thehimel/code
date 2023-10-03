@@ -4,7 +4,7 @@ Author: Himel Das
 
 import pytest
 
-from mocking_with_pytest.advanced.get_data import get_countries_with_population
+from mocking_with_pytest.get_data import get_countries_with_population
 
 mocked_response = {
     "usa": {
@@ -58,7 +58,7 @@ test_data = [
 @pytest.mark.parametrize("country_names, expected", test_data)
 def test_get_countries_with_population(country_names, expected, mocker):
     mocker.patch(
-        target="mocking_with_pytest.advanced.get_data.get_country",
+        target="mocking_with_pytest.get_data.get_country",
         side_effect=lambda *args, **kwargs: mocked_response[kwargs["country_name"]],
     )
     assert get_countries_with_population(country_names=country_names) == expected
