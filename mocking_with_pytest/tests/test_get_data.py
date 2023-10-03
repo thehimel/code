@@ -12,7 +12,7 @@ specified mocked response. It's important to include the patch section before th
 
 import pytest
 from unittest.mock import Mock
-from mocking_with_pytest.get_data import get_country_data
+from mocking_with_pytest.get_data import get_country
 
 
 def test_get_country_data_positive(mocker):
@@ -40,7 +40,7 @@ def test_get_country_data_positive(mocker):
             "population": 329484123,
         },
     }
-    assert get_country_data(name="canada") == expected
+    assert get_country(name="canada") == expected
 
 
 def test_get_country_data_negative(mocker):
@@ -51,7 +51,7 @@ def test_get_country_data_negative(mocker):
     mocker.patch(target="requests.get", return_value=mock_response)
 
     expected = {"status_code": 500}
-    response = get_country_data(name="canada")
+    response = get_country(name="canada")
     assert expected == response
     assert "data" not in response
 
