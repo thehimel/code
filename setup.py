@@ -9,6 +9,14 @@ setup(
     long_description="Various code snippets are stored in this repository.",
     url="https://github.com/thehimel/code",
     packages=find_packages(),
+    install_requires=[
+        "black>=23.9.1",
+        "isort>=3.11.1",
+        "flake8>=6.1.0",
+        "requests>=2.31.0",
+        "pytest>=7.4.2",
+        "pytest-mock>=3.11.1",
+    ],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
