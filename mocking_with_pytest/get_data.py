@@ -6,8 +6,6 @@ import requests
 
 from utilities.logger import logger
 
-from mocking_with_pytest.country import Country
-
 
 def get_country(country_name: str) -> dict:
     api_url = "https://restcountries.com/v3.1/name"
@@ -45,28 +43,9 @@ def get_countries_with_population(country_names: [str]) -> list:
     return res
 
 
-def get_country_data(country_name: str):
-    response = get_country(country_name=country_name)
-    data = response["body"]
-
-    if response["success"]:
-        country = Country(
-            name=data["name"],
-            currencies=data["currencies"],
-            region=data["region"],
-            population=data["population"],
-        )
-        reply = {"success": True, "country": country.to_dict()}
-    else:
-        reply = {"success": False, "cause": data}
-
-    return reply
-
-
 if __name__ == "__main__":
     logger.info(get_country(country_name="usa"))
     countries = ["usa", "canada", "australia", "unknown"]
     logger.info(
         msg=f"Countries with population: {get_countries_with_population(country_names=countries)}"
     )
-    logger.info(get_country_data(country_name="italy"))
