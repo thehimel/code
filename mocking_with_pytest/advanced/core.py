@@ -24,7 +24,7 @@ def main():
             msg=f"Error fetching data for the country '{country_name}': {data}."
         )
 
-    countries = ["usa", "canada", "australia2"]
+    countries = ["usa", "canada", "australia", "unknown"]
     logger.info(
         msg=f"Countries with population: {get_countries_with_population(country_names=countries)}"
     )
