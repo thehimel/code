@@ -1,6 +1,7 @@
 """Author: Himel Das"""
 
 import re
+
 from utilities.logger import logger
 
 
@@ -19,13 +20,17 @@ class Country:
     def set_currency(self, currency):
         """Setter method for currency."""
         if not self.is_valid_currency(currency=currency):
-            raise ValueError("Currency should be a 3 characters long alphabetic string.")
+            raise ValueError(
+                "Currency should be a 3 characters long alphabetic string."
+            )
         self._currency = currency
 
     @staticmethod
     def is_valid_currency(currency):
         """Check if the currency is valid."""
-        pattern = r'^[a-zA-Z]{3}$'  # Regex pattern to match 3-character alphabetic string.
+        pattern = (
+            r"^[a-zA-Z]{3}$"  # Regex pattern to match 3-character alphabetic string.
+        )
         return re.match(pattern=pattern, string=currency)
 
     def __str__(self):
@@ -35,8 +40,10 @@ class Country:
 
 def handler():
     """This is important because if we define something inside '__main__', it is accessible all over the file, and that
-     can interfere with variables and methods of other entities."""
-    country = Country(name="USA", continent="North America", currency="USD")  # Create an instance of the class
+    can interfere with variables and methods of other entities."""
+    country = Country(
+        name="USA", continent="North America", currency="USD"
+    )  # Create an instance of the class
     logger.info(country)
 
 

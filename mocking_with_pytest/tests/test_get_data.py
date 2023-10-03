@@ -10,8 +10,10 @@ response as the return value for this mocking target. It means, wherever 'reques
 specified mocked response. It's important to include the patch section before the assertion section.
 """
 
-import pytest
 from unittest.mock import Mock
+
+import pytest
+
 from mocking_with_pytest.get_data import get_country
 
 
