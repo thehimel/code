@@ -1,12 +1,7 @@
 from pathlib import Path
 
-from aws_s3.config.cfg import (
-    AWS_ACCESS_KEY_ID,
-    AWS_S3_BUCKET_NAME,
-    AWS_SECRET_ACCESS_KEY,
-    REGION_NAME,
-    AWS_S3_BUCKET_NAME_SECONDARY,
-)
+from aws_s3.config.cfg import (AWS_ACCESS_KEY_ID, AWS_S3_BUCKET_NAME, AWS_S3_BUCKET_NAME_SECONDARY,
+                               AWS_SECRET_ACCESS_KEY, REGION_NAME)
 from aws_s3.handlers.s3_handler import S3Handler
 
 
