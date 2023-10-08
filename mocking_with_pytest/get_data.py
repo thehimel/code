@@ -4,7 +4,7 @@ Author: Himel Das
 
 import requests
 
-from utilities.logger import logger
+from utilities.logger import logging
 
 
 def get_country(country_name: str) -> dict:
@@ -44,8 +44,8 @@ def get_countries_with_population(country_names: [str]) -> list:
 
 
 if __name__ == "__main__":
-    logger.info(get_country(country_name="usa"))
+    logging.info(get_country(country_name="usa"))
     countries = ["usa", "canada", "australia", "unknown"]
-    logger.info(
+    logging.info(
         msg=f"Countries with population: {get_countries_with_population(country_names=countries)}"
     )
