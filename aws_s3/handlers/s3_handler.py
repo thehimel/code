@@ -7,9 +7,10 @@ class S3Handler:
     def __init__(self, region_name, aws_access_key_id, aws_secret_access_key):
         self.region_name = region_name
         self.resource = boto3.resource(
-            "s3", region_name=region_name,
+            "s3",
+            region_name=region_name,
             aws_access_key_id=aws_access_key_id,
-            aws_secret_access_key=aws_secret_access_key
+            aws_secret_access_key=aws_secret_access_key,
         )
 
     def create_bucket(self, bucket_name: str):
