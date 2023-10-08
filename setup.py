@@ -16,7 +16,8 @@ setup(
         "requests>=2.31.0",
         "pytest>=7.4.2",
         "pytest-mock>=3.11.1",
-        "boto3>=1.28.62",  # aws_s3
+        "boto3>=1.28.62",
+        "python-decouple>=3.8",
     ],
     classifiers=[
         "Programming Language :: Python :: 3",

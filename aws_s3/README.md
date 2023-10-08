@@ -20,3 +20,15 @@
 * Enter region name, for example, `us-east-1`.
 * Enter a default output format, for example, `json`.
 * Test the connection with a command, for example, `aws s3api list-buckets`.
+
+### Environment Variables
+
+* Store the following environment variables in the `.env` file at the root level of the directory.
+
+```dotenv
+AWS_ACCESS_KEY_ID=GET_DATA
+AWS_SECRET_ACCESS_KEY=GET_DATA
+AWS_S3_BUCKET_NAME=GET_DATA
+REGION_NAME=us-east-1
+```
+

@@ -2,7 +2,7 @@
 
 import re
 
-from utilities.logger import logger
+from utilities.logger import logging
 
 
 class Country:
@@ -44,7 +44,7 @@ def handler():
     country = Country(
         name="USA", continent="North America", currency="USD"
     )  # Create an instance of the class
-    logger.info(country)
+    logging.info(country)
 
 
 if __name__ == "__main__":
