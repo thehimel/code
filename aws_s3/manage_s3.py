@@ -10,43 +10,28 @@ def main():
         region_name=REGION_NAME,
         aws_access_key_id=AWS_ACCESS_KEY_ID,
         aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+        default_bucket_name=AWS_S3_BUCKET_NAME,
+        default_download_path="downloads"
     )
 
     s3.create_bucket(bucket_name=AWS_S3_BUCKET_NAME)
     s3.create_bucket(bucket_name=AWS_S3_BUCKET_NAME_SECONDARY)
 
-    local_path = Path("files/sample.txt").absolute()
-    remote_path = local_path.name
-    s3.upload_file(
-        bucket_name=AWS_S3_BUCKET_NAME,
-        local_path=str(local_path),
-        remote_path=remote_path,
-    )
+    s3.upload_file(local_path="uploads/root.txt")
+    s3.upload_file(local_path="uploads/sample.txt")
+    s3.upload(local_path="uploads/parent", s3_prefix="root")
 
     s3.copy_file(
         source_bucket_name=AWS_S3_BUCKET_NAME,
-        source_key=remote_path,
+        source_key="files/sample.txt",
         destination_bucket_name=AWS_S3_BUCKET_NAME_SECONDARY,
-        destination_key=remote_path,
+        destination_key="files/sample.txt",
     )
 
-    local_path = Path("files/upload.txt").absolute()
-    remote_path = local_path.name
-    s3.upload_file(
-        bucket_name=AWS_S3_BUCKET_NAME,
-        local_path=str(local_path),
-        remote_path=remote_path,
-    )
-
-    local_path = Path("files/download.txt").absolute()
-    s3.download_file(
-        bucket_name=AWS_S3_BUCKET_NAME,
-        local_path=str(local_path),
-        remote_path=remote_path,
-    )
+    s3.download_file(s3_key="files/sample.txt")
 
     s3.delete_files(
-        bucket_name=AWS_S3_BUCKET_NAME, remote_paths=[remote_path, "download.txt"]
+        bucket_name=AWS_S3_BUCKET_NAME, s3_keys=["files/root.txt"]
     )
 
     s3.list_files(bucket_name=AWS_S3_BUCKET_NAME)
