@@ -1,4 +1,5 @@
 import boto3
+from pathlib import Path
 from botocore.exceptions import ClientError
 
 from utilities.logger import logging
@@ -84,3 +85,13 @@ class S3Handler:
         res = self.resource.meta.client.list_objects(Bucket=bucket_name)
         objects = [content["Key"] for content in res.get("Contents", [])]
         logging.info(msg=f"s3://{bucket_name}: Files = {objects}")
+
+    def upload(self, bucket_name, local_path: str, s3_prefix: str = ""):
+        local_path = Path(local_path).resolve()
+        if not local_path.is_dir():
+            remote_path = s3_prefix + local_path.as_posix()
+            self.upload_file(bucket_name=bucket_name, local_path=local_path.as_posix(), remote_path=remote_path)
+        for item in local_path.glob('**/*'):
+            if item.is_file():
+                remote_path = s3_prefix + item.relative_to(local_path).as_posix()
+                self.upload_file(bucket_name=bucket_name, local_path=item.as_posix(), remote_path=remote_path)
