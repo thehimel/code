@@ -27,3 +27,7 @@
   ]
 }
 ```
+
+## Install Tailwindcss
+
+* [How to Set up React and Tailwind CSS with Vite in a Project](https://www.freecodecamp.org/news/how-to-install-tailwindcss-in-react/)
